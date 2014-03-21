@@ -12,7 +12,7 @@ NOTICE BEFORE YOU USE
 TODO
 ====
 
-* make setup and configuration of features like aliases, prompts, etc. compatible to other formulas as well
+* make setup and configuration of features like aliases, prompts, etc. compatible to other formulas and shells as well
 * configure shell aliases
 * configure skeleton
 * configure login/logout scripts
