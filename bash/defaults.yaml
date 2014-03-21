@@ -1,0 +1,6 @@
+{% load_yaml as rawmap %}
+Debian:
+  pkgs:
+    - bash
+    - bash-completion
+{% endload %}
