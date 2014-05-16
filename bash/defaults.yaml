@@ -3,4 +3,8 @@ Debian:
   pkgs:
     - bash
     - bash-completion
+RedHat:
+  pkgs:
+    - bash
+    - bash-completion
 {% endload %}
