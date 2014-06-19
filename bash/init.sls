@@ -17,6 +17,7 @@ userdir_bash_profile:
     - managed
     - name: {{ salt['user.info'](u).home ~ '/.bash_profile' }}
     - source: salt://bash/files/userdir/.bash_profile
+    - template: jinja
     - mode: 640
     - user: {{ u }}
     - group: {{ u }}
@@ -26,6 +27,7 @@ userdir_bash_logout:
     - managed
     - name: {{ salt['user.info'](u).home ~ '/.bash_logout' }}
     - source: salt://bash/files/userdir/.bash_logout
+    - template: jinja
     - mode: 640
     - user: {{ u }}
     - group: {{ u }}
@@ -35,6 +37,7 @@ userdir_bash_aliases:
     - managed
     - name: {{ salt['user.info'](u).home ~ '/.bash_aliases' }}
     - source: salt://bash/files/userdir/.bash_aliases
+    - template: jinja
     - mode: 640
     - user: {{ u }}
     - group: {{ u }}
@@ -44,6 +47,7 @@ userdir_bashrc:
     - managed
     - name: {{ salt['user.info'](u).home ~ '/.bashrc' }}
     - source: salt://bash/files/userdir/.bashrc
+    - template: jinja
     - mode: 640
     - user: {{ u }}
     - group: {{ u }}
