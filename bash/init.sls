@@ -6,46 +6,44 @@
 bash:
   pkg:
     - installed
-    - pkgs:
-{% for p in datamap.pkgs %}
-      - {{ p }}
-{% endfor %}
+    - pkgs: {{ datamap.pkgs }}
 
 {% for u in salt['pillar.get']('bash:config:manage:users', []) %}
-userdir_bash_profile:
+  {% set homedir = salt['user.info'](u).home|default('/home/' ~ u) %}
+user_{{ u }}_bash_profile:
   file:
     - managed
-    - name: {{ salt['user.info'](u).home ~ '/.bash_profile' }}
+    - name: {{ homedir ~ '/.bash_profile' }}
     - source: salt://bash/files/userdir/.bash_profile
     - template: jinja
     - mode: 640
     - user: {{ u }}
     - group: {{ u }}
 
-userdir_bash_logout:
+user_{{ u }}_bash_logout:
   file:
     - managed
-    - name: {{ salt['user.info'](u).home ~ '/.bash_logout' }}
+    - name: {{ homedir ~ '/.bash_logout' }}
     - source: salt://bash/files/userdir/.bash_logout
     - template: jinja
     - mode: 640
     - user: {{ u }}
     - group: {{ u }}
 
-userdir_bash_aliases:
+user_{{ u }}_bash_aliases:
   file:
     - managed
-    - name: {{ salt['user.info'](u).home ~ '/.bash_aliases' }}
+    - name: {{ homedir ~ '/.bash_aliases' }}
     - source: salt://bash/files/userdir/.bash_aliases
     - template: jinja
     - mode: 640
     - user: {{ u }}
     - group: {{ u }}
 
-userdir_bashrc:
+user_{{ u }}_bashrc:
   file:
     - managed
-    - name: {{ salt['user.info'](u).home ~ '/.bashrc' }}
+    - name: {{ homedir ~ '/.bashrc' }}
     - source: salt://bash/files/userdir/.bashrc
     - template: jinja
     - mode: 640
